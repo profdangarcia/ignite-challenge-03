@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { api } from '../services/api';
-import { Product, Stock } from '../types';
+import { Product } from '../types';
 
 interface CartProviderProps {
   children: ReactNode;
@@ -72,7 +72,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       if(!productInCart){
         throw new Error('Product not found');
       }
-      
+
       const newCartData = cart.filter(product => product.id !== productId);
       localStorage.setItem('@RocketShoes:cart', JSON.stringify(newCartData));
       setCart(newCartData);
